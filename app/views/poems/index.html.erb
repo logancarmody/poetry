@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Poems</h1>
+<% @poems.each do |poem| %>
+  <%= render poem, index: true %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Poem', new_poem_path %>

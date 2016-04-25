@@ -1,0 +1,28 @@
+<%= form_for(@poem) do |f| %>
+  <% if @poem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poem.errors.count, "error") %> prohibited this poem from being saved:</h2>
+
+      <ul>
+      <% @poem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :search %><br>
+    <%= f.text_field :search %>
+  </div>
+  <div class="field">
+    <%= f.label :second_search, "Second Search (Optional)" %><br>
+    <%= f.text_field :second_search %>
+  </div>
+  <div class="field>
+    <%= f.label :deep, "Deep Search? (May take longer to generate)" %>
+    <%= f.check_box :deep %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

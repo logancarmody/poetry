@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lexicon: MyText
+  poem: MyText
+  search: MyString
+
+two:
+  lexicon: MyText
+  poem: MyText
+  search: MyString

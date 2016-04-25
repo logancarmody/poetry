@@ -1,0 +1,13 @@
+<div align="center">
+  <% if index %>
+    <h3><%= link_to poem_title(poem), poem %></h3>
+  <% else %>
+    <h1><%= poem_title(poem) %></h1>
+  <% end %>
+
+  <p><% poem.poem.split(" || ").each do |line| %>
+    <%= line %>
+    <br>
+  <% end %>
+</div>
+
