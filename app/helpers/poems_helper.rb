@@ -7,16 +7,18 @@ module PoemsHelper
     lex += get_text(poem_params[:second_search]) if ss
     lex = Sanitize.fragment(lex)
     poem = ""
-    mark = MarkyMarkov::TemporaryDictionary.new
-    mark.parse_string lex
-    random_range(6, 15).times do 
-      if rand % 2 
-        poem += mark.generate_n_words random_range(3, 8)
-      else 
-        poem += mark.generate_1_sentence
-      end
-      poem += " || "
-    end
+ #   mark = MarkyMarkov::TemporaryDictionary.new
+    mark = MarkovChains::Generator.new(lex)
+ #   mark.parse_string lex
+    #random_range(6, 15).times do 
+    #  if rand % 2 
+    #    poem += mark.generate_n_words random_range(3, 8)
+    #  else 
+   #     poem += mark.generate_1_sentence
+  #    end
+    poem = mark.get_sentences(random_range(6, 12)).join(" || ")
+    #  poem += " || "
+    #end
     return {poem: poem, lexicon: lex, search: search, ss: ss, second_search: poem_params[:second_search]}
   end
 
@@ -33,7 +35,12 @@ module PoemsHelper
   end
 
   def wikipedia_search(query)
-    return Wikipedia.find(query).summary.delete('\n')
+    p = Wikipedia.find(query)
+    begin
+      return p.summary.delete('\n')
+    rescue
+      return ""
+    end
   end
 
   def random_range(start, stop)

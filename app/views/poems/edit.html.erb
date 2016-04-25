@@ -1,9 +1,10 @@
 <h1>Editing Poem</h1>
+<div align="center">
 <%= form_for(@poem) do |f| %>
 
   <div class="field">
     <p>New lines are seperated by ' || '</p>
-    <%= f.text_area :poem %>
+    <%= f.text_area :poem, size: "50x10" %>
   </div>
 
   <div class="actions">
@@ -14,3 +15,4 @@
 <% end %>
 <%= link_to 'Show', @poem %> |
 <%= link_to 'Back', poems_path %>
+</div>

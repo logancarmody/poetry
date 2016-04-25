@@ -87,6 +87,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    markov_chains (0.1.1)
     marky_markov (0.3.5)
       msgpack
     mime-types (3.0)
@@ -182,6 +183,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  markov_chains
   marky_markov
   rails (= 4.2.4)
   sanitize
