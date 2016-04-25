@@ -102,6 +102,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     nokogumbo (1.4.7)
       nokogiri
+    pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   markov_chains
   marky_markov
+  pg
   rails (= 4.2.4)
   sanitize
   sass-rails (~> 5.0)
