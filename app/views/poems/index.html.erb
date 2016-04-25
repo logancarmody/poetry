@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Poems</h1>
+<h1>Generated Poems</h1>
+<h2>Randomly generated Markov-Poems based on Google Searches</h2>
 <% @poems.each do |poem| %>
   <%= render poem, index: true %>
 <% end %>
