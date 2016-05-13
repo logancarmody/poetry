@@ -9,7 +9,7 @@ class PoemsController < ApplicationController
   # GET /poems
   # GET /poems.json
   def index
-    @poems = Poem.all.reverse
+    @poems = Poem.all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /poems/1
@@ -29,18 +29,26 @@ class PoemsController < ApplicationController
   # POST /poems
   # POST /poems.json
   def create
-    poem_params = generate_poem
-    @poem = Poem.new(poem_params)
+      poem_params = generate_poem
+      if poem_params
+        @poem = Poem.new(poem_params)
 
-    respond_to do |format|
-      if @poem.save
-        format.html { redirect_to @poem, notice: 'Poem was successfully created.' }
-        format.json { render :show, status: :created, location: @poem }
+        respond_to do |format|
+          if @poem.save
+            format.html { redirect_to @poem, notice: 'Poem was successfully created.' }
+            format.json { render :show, status: :created, location: @poem }
+          else
+            format.html { render :new }
+            format.json { render json: @poem.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :new }
-        format.json { render json: @poem.errors, status: :unprocessable_entity }
+        @poem = Poem.new
+        respond_to do |format|
+          format.html { render :new }
+          format.json { render json: "Search returned nothing", status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /poems/1

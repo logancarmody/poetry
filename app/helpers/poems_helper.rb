@@ -1,11 +1,11 @@
 module PoemsHelper
   def generate_poem
     search = poem_params[:search]
-    ss = poem_params[:second_search].present? 
     lex = ""
     lex += get_text(search)
-    lex += get_text(poem_params[:second_search]) if ss
+    lex += get_text(poem_params[:second_search])
     lex = Sanitize.fragment(lex)
+    return nil if lex.empty?
     poem = ""
  #   mark = MarkyMarkov::TemporaryDictionary.new
     mark = MarkovChains::Generator.new(lex)
@@ -19,10 +19,11 @@ module PoemsHelper
     poem = mark.get_sentences(random_range(6, 12)).join(" || ")
     #  poem += " || "
     #end
-    return {poem: poem, lexicon: lex, search: search, ss: ss, second_search: poem_params[:second_search]}
+    return {poem: poem, lexicon: lex, search: search, ss: poem_params[:second_search].present?, second_search: poem_params[:second_search]}
   end
 
   def get_text(query)
+    return "" if query.empty?
     return google_search(query) + wikipedia_search(query)
   end
 

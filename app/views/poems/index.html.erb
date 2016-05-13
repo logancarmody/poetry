@@ -5,7 +5,9 @@
 <% @poems.each do |poem| %>
   <%= render poem, index: true %>
 <% end %>
-
+<div class="center">
+	<%= will_paginate @poems, renderer: BootstrapPagination::Rails %>
+</div>
 <br>
 
 <%= link_to 'New Poem', new_poem_path %>
