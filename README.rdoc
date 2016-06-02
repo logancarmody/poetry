@@ -1,9 +1,17 @@
 = Google Poetry
 
-A Web Application which generates random poetry based on one or more Google and Wikipedia searches.
+A Web Application which generates random poetry based on one or more Google and Wikipedia searches. Currently the poetry generator uses a Markov chain gem, but I hope to work in some NLG aspects
 
 == Requirements
+
+* Rails 4.2.+
+
+* Sqlite
 
 == Getting Started
 
 To get started, clone the repo, <tt>bundle</tt>, <tt>rake db:init && rake db:migrate</tt> and you're good to go. <tt>rails s</tt> to start the server.
+
+== Contributing
+
+Fork it... etc. You know the drill. If you don't, you probably shouldn't be contributing
