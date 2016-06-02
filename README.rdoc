@@ -1,4 +1,4 @@
-== Google Poetry
+= Google Poetry
 
 A Web Application which generates random poetry based on one or more Google and Wikipedia searches.
 
